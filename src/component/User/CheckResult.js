@@ -20,7 +20,7 @@ export default function CheckResult() {
                 navigate(`/result/${symbol}` )
 
                 setSymbol('')
-                toast.success("Mathc Sybmol")
+                toast.success("Match Sybmol")
             }
             else {
                 toast.warn("Not Match symbol")

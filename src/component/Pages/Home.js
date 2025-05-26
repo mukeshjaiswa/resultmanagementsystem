@@ -22,7 +22,7 @@ export default function Home() {
         <div>
             <Navbar />
             <div className=' bg-red h-full flex flex-col justify-center items-center '>
-                <img src={image} alt="results" className='w-full h-[300px] md:h-[350px] object-fill place-items-center ' />
+                <img src={image} alt="results" className='w-full h-[350px] center md:h-[350px] object-fill place-items-center ' />
             </div>
             <div className=' w-[300px] md:w-[600px] m-auto px-5 md:px-10 py-10'>
                 <div className=''>

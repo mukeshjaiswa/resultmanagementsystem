@@ -64,7 +64,7 @@ export default function () {
                 </div>
                 <div className='w-[70%] md:w-[45%] py-5 rounded-lg bg-yellow-500 flex justify-between items-center px-0'>
                     <FaBuildingColumns size={80} className=' text-gray-200 opacity-50' />
-                    <a href='' className='flex flex-col justify-between text-white text-xl px-5'>
+                    <a href='/manage-semester' className='flex flex-col justify-between text-white text-xl px-5'>
                         <h1 className='text-end'>{totalsemester}</h1>
                         <h1 className='text-slate-200'>Total semester listed</h1>
 
@@ -73,11 +73,11 @@ export default function () {
                 </div>
                 <div className='w-[70%] md:w-[45%] py-5 rounded-lg bg-green-500 flex justify-between items-center px-0'>
                     <FiFileText size={80} className=' text-gray-200 opacity-50' />
-                    <div className='flex flex-col justify-between text-white text-xl px-5'>
+                    <a href='/manage-semester' className='flex flex-col justify-between text-white text-xl px-5'>
                         <h1 className='text-end'>{totalsemester}</h1>
                         <h1 className='text-slate-200'>Total class listed</h1>
 
-                    </div>
+                    </a>
 
                 </div>
             </div>
