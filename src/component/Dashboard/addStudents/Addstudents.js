@@ -28,12 +28,12 @@ export default function Addstudents() {
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
-        alert("These symbol number is already exit");
+        toast.warn("These symbol number is already exit");
         return false;
 
       }
       await addDoc(addref, data);
-      alert("Add students to firebase sucessfull")
+      toast.sucess("Add students to firebase sucessfull")
       return true
     } catch (error) {
       console.log("error")
@@ -60,7 +60,7 @@ export default function Addstudents() {
 
 
     if (new Date(dob) > today) {
-      alert("Date in not valid")
+      toast.warn("Date in not valid")
     }
     else {
 
@@ -124,7 +124,7 @@ export default function Addstudents() {
               </div>
 
               <div className="flex items-center space-x-4">
-                <label className="w-32 text-gray-700">Class</label>
+                <label className="w-32 text-gray-700">Semester</label>
                 <select value={selectsemester} onChange={(e) => setSelectsemester(e.target.value)} required className="border rounded-md border-gray-400 p-2 flex-1">
                   <option value='' disabled selected> Select Semester</option>
                   {semester.map((item, index) => (

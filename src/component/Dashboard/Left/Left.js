@@ -16,7 +16,7 @@ export default function Left() {
     }
 
     return (
-        <div className='w-[380px] h-[91vh] bg-gray-800 hidden sm:block md:block px-4 py-5  '>
+        <div className='w-[380px] h-screen  bg-gray-800 hidden sm:block md:block px-4 py-5  '>
             <h1 className='text-gray-400 text-md  font-semibold'>MAIN CATEGORY</h1>
             <div className='flex items-center mt-5 text-lg text-white gap-3'>
                 <AiFillDashboard />

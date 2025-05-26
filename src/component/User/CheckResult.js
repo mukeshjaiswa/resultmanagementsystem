@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { collection, getDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../config/firebase';
+import { toast } from 'react-toastify';
 
 
 export default function CheckResult() {
@@ -17,10 +18,12 @@ export default function CheckResult() {
             if (!checkdata.empty) {
                
                 navigate(`/result/${symbol}` )
+
                 setSymbol('')
+                toast.success("Mathc Sybmol")
             }
             else {
-                alert("Not Match symbol")
+                toast.warn("Not Match symbol")
             }
         } catch (error) {
 

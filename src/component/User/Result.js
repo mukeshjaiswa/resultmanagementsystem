@@ -1,7 +1,7 @@
 import React from 'react'
 import { FiPrinter } from "react-icons/fi";
 import { useState } from 'react';
-import { data } from './ResultData';
+
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { collection, getDoc, getDocs, query, where } from 'firebase/firestore';
@@ -61,7 +61,7 @@ if (!studentdata) {
           </div>
           <div className='flex px-1 sm:px-5  mt-1  '>
             <h1 className='font-semibold text-gray-700 text-sm sm:text-lg whitespace-nowrap font-mono tracking-wide'>Semester: </h1>
-            <h4 className='font-mono tracking-wide text-sm sm:text-lg'>semester  {studentdata.semester}</h4>
+            <h4 className='font-mono tracking-wide text-sm sm:text-lg'>  { studentdata.semester}</h4>
           </div>
 
         </div>

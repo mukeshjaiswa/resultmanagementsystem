@@ -11,7 +11,7 @@ export default function Dashboardnavbar() {
 navigate('/')
     }
     return (
-        <div className='w-full  flex justify-between items-center bg-white  px-4 md:px-8 py-3 '>
+        <div className='w-full   flex justify-between items-center bg-white  px-4 md:px-8 py-3 '>
             <div className=' flex justify-center  items-center gap-[50px]'>
                 <h1 className='text-xl text-gray-500'>SRMS | Admin </h1>
                 <div className='hidden md:flex items-center justify-center gap-4'>

@@ -1,32 +1,31 @@
-import { async } from '@firebase/util'
-import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore'
 import React from 'react'
-import { useState,useEffect } from 'react'
 import { BiSolidEditAlt } from 'react-icons/bi'
 import { IoTrashOutline } from 'react-icons/io5'
-import { toast } from 'react-toastify'
-import { db } from '../../config/firebase'
+import {useState, useEffect } from 'react'
 import Dashboardnavbar from '../Dashboardnavbar'
 import Left from '../Left/Left'
+import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../../config/firebase'
+import { toast } from 'react-toastify'
 
-export default function ManageResult() {
+export default function Managesubject() {
     const [semester, setSemester] = useState('')
-    const [results, setResults] = useState([])
+    const [subject, setSubject] = useState([])
     const[getsemester,setGetsemester]=useState([])
     useEffect(() => {
         const getstudents = async () => {
             try {
-                const resultref = collection(db, "result");
+                const studentsref = collection(db, "subject");
 
                 let semesterref;
                 if (semester) {
 
-                    const fetchsemester = query(resultref, where('semester', '==', semester))
+                    const fetchsemester = query(studentsref, where('semester', '==', semester))
                     semesterref = await getDocs(fetchsemester);
 
                 }
                 else {
-                    semesterref = await getDocs(resultref)
+                    semesterref = await getDocs(studentsref)
                 }
 
                 const data = semesterref.docs.map((doc) => ({
@@ -35,7 +34,7 @@ export default function ManageResult() {
                 }))
 
 
-                setResults(data)
+                setSubject(data)
             } catch (error) {
                 console.log('error')
             }
@@ -43,6 +42,7 @@ export default function ManageResult() {
         }
         getstudents()
     }, [semester])
+
     useEffect(() => {
         const getsemester = async () => {
           const semesterref = collection(db, 'semester');
@@ -56,9 +56,10 @@ export default function ManageResult() {
         getsemester()
       },[])
       const handlerdelete=async(id)=>{
-          await deleteDoc(doc(db,'result',id));
-          setResults(prev=>prev.filter(res=>res.id!= id))
-          toast.success("Successfully delete")
+          await deleteDoc(doc(db,"subject",id))
+          setSubject(prev=>prev.filter(sub=>sub.id!==id))
+          toast.success("Sucessfull delete")
+
       }
   return (
     <div className=' h-[100vh] w-full'>
@@ -68,7 +69,7 @@ export default function ManageResult() {
         <div className=' w-full bg-gray-200  border-t  '>
             <div className='bg-white p-4 w-full'>
 
-                <h1 className='text-2xl font-semibold'>Manage students </h1>
+                <h1 className='text-2xl font-semibold'>Manage Suject </h1>
             </div>
 
 
@@ -81,16 +82,19 @@ export default function ManageResult() {
 
                         <select required name="" id="" className="border rounded-md border-gray-400 p-2 flex-1" onChange={(e) => setSemester(e.target.value)}>
                             <option value='' disabled selected> Select Semester</option>
-                            {getsemester.map((data,index)=>(
-                                <option key={index} value={data.semester}>{data.semester}</option>
+                            
+                           {getsemester.map((data,index)=>(
 
-                            ))}
+                                <option key={index} value={data.semester}>{data.semester} </option>
+                           ))}
+
+                           
                             
                         </select>
                     </div>
 
 
-                    { results.length>0? 
+                    { subject.length>0? 
 
 
                         <table className=' w-[90%]  mt-5 border border-black rounded-sm m-auto  gap-5 '>
@@ -98,25 +102,25 @@ export default function ManageResult() {
                             <thead className=''>
                                 <tr className='bg-gray-100 w-full'>
                                     <th className=" w-16 border border-gray-300 px-4 py-2 text-left">Sno.</th>
+                                    <th className="border border-gray-300 px-4 py-2 text-left">subject Name</th>
+                                    <th className=" w-16 border border-gray-300 px-4 py-2 text-left">SUbject Code</th>
                                     <th className=" w-16 border border-gray-300 px-4 py-2 text-left">Semester</th>
-                                    <th className="  border border-gray-300 px-4 py-2 text-left">Name</th>
-                                    <th className="border border-gray-300 px-4 py-2 text-left">Symbol</th>
+                          
                                     <th className=" w-16 border border-gray-300 px-4 py-2 text-left">Action</th>
 
                                 </tr>
                             </thead>
 
                             <tbody>
-                                {results.map((data, index) => (
+                                {subject.map((data, index) => (
                                     <tr key={index}>
-                                        <td className=" w-16 border border-gray-300 px-4 py-2 text-left">{index+1}</td>
+                                        <td className="  border border-gray-300 px-4 py-2 text-left">{index+1}</td>
+                                        <td className=' border border-gray-300 px-4 py-2 text-left '>{data.subjectname}</td>
+                                        <td className=' border border-gray-300 px-4 py-2 text-left '>{data.subjectcode}</td>
                                         <td className=' border border-gray-300 px-4 py-2 text-left '>{data.semester}</td>
-                                        <td className=' border border-gray-300 px-4 py-2 text-left '>{data.name}</td>
-                                        <td className=' border border-gray-300 px-4 py-2 text-left '>{data.symbol}</td>
-                                       
                                         <td className=' border flex gap-3 text-2xl border-gray-300 px-4 py-2 text-left '>
                                             <BiSolidEditAlt />
-                                            <IoTrashOutline className='cursor-pointer hover:text-red-500' onClick={()=>handlerdelete(data.id)} />
+                                            <IoTrashOutline className='cursor-pointer hover:text-red-500' onClick={()=>handlerdelete(data.id)}/>
 
                                         </td>
 
@@ -126,12 +130,13 @@ export default function ManageResult() {
                             </tbody>
                        </table>
                        :
-                       <p>No Result found</p> }
+                       <p>No Subject Found</p> }
                 </div>
 
             </div>
         </div>
     </div>
 </div>
-  )
+)
+  
 }

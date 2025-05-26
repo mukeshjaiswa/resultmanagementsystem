@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -7,6 +7,8 @@ import Dashboardnavbar from '../Dashboardnavbar'
 import Left from '../Left/Left'
 import { IoTrashOutline } from "react-icons/io5";
 import { BiSolidEditAlt } from "react-icons/bi";
+import { async } from '@firebase/util'
+import { toast } from 'react-toastify'
 export default function ManageStudents() {
     const [semester, setSemester] = useState('')
     const [students, setStudents] = useState([])
@@ -54,7 +56,11 @@ export default function ManageStudents() {
         }
         getsemester()
       },[])
-
+const handlerdelete=async(id)=>{
+    await deleteDoc(doc(db,'students',id));
+     setStudents(prev=>prev.filter(sub=>sub.id!=id))
+     toast.success("Sucessfully deleter")
+}
     console.log(students)
    
     return (
@@ -98,6 +104,7 @@ export default function ManageStudents() {
                                     <thead className=''>
                                         <tr className='bg-gray-100 w-full'>
                                             <th className=" w-16 border border-gray-300 px-4 py-2 text-left">Sno.</th>
+                                            <th className=" w-16 border border-gray-300 px-4 py-2 text-left">Sno.</th>
                                             <th className="border border-gray-300 px-4 py-2 text-left">Name</th>
                                             <th className=" w-16 border border-gray-300 px-4 py-2 text-left">Email</th>
                                             <th className=" w-16 border border-gray-300 px-4 py-2 text-left">Semester</th>
@@ -110,12 +117,13 @@ export default function ManageStudents() {
                                         {students.map((data, index) => (
                                             <tr key={index}>
                                                 <td className="  border border-gray-300 px-4 py-2 text-left">{index+1}</td>
+                                                <td className="  border border-gray-300 px-4 py-2 text-left">{data.symbol}</td>
                                                 <td className=' border border-gray-300 px-4 py-2 text-left '>{data.name}</td>
                                                 <td className=' border border-gray-300 px-4 py-2 text-left '>{data.email}</td>
                                                 <td className=' border border-gray-300 px-4 py-2 text-left '>{data.semester}</td>
                                                 <td className=' border flex gap-3 text-2xl border-gray-300 px-4 py-2 text-left '>
                                                     <BiSolidEditAlt />
-                                                    <IoTrashOutline />
+                                                    <IoTrashOutline className='cursor-pointer hover:text-red-500' onClick={(e)=>handlerdelete(data.id)} />
 
                                                 </td>
 

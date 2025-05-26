@@ -9,7 +9,7 @@ export default function Dashboard() {
       <Dashboardnavbar/>
       <div className='flex '>
           <Left/>
-          <Rightdashboard/>
+          <Rightdashboard className='mt-10'/>
       </div>
     </div>
   )

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../config/firebase';
+import { toast } from 'react-toastify';
 
 export default function AdminLogin() {
     const [username, setUserName] = useState('');
@@ -17,7 +18,7 @@ export default function AdminLogin() {
 
     const signinhandler = async () => {
         if (username === '' || passhide === '') {
-            alert("Please enter all fields")
+            toast.warning("Please enter all fields")
         } else {
             const adminref = collection(db, "admin");
             const q = query(adminref,
@@ -29,9 +30,10 @@ export default function AdminLogin() {
             if (!admindata.empty) {
 
                 navigate('/dashboard')
+                toast.success("Login Sucessfully")
             }
             else {
-                alert("UserName and PassWord are not match ")
+                toast.warn("UserName and PassWord are not match ")
             }
         }
 

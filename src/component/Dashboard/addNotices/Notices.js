@@ -3,6 +3,7 @@ import { addDoc, collection, getDocs } from 'firebase/firestore';
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { db } from '../../config/firebase';
 import Dashboardnavbar from '../Dashboardnavbar'
 import Left from '../Left/Left'
@@ -16,7 +17,7 @@ export default function Notices() {
         try {
             const noticeref=collection(db,'addnotice');
             await addDoc(noticeref,data)
-            alert("notice added sucessfully")
+            toast("Notice sucessfully added")
         } catch (error) {
             console.log("error")
         }

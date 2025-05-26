@@ -19,6 +19,7 @@ export const data=[
         add:'Add semester',
         manage:'Manage semester',
         manageicon:TiThMenu,
+        manageroute:'/manage-semester',
         route: '/add-semester',
 
     },
@@ -29,6 +30,7 @@ export const data=[
         add:'Add Subjects',
         manage:'Manage Subject',
         route: '/add-subject',
+        manageroute:'/manage-subject',
         manageicon:TiThMenu,
 
     },
