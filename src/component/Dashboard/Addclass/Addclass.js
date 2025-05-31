@@ -1,9 +1,9 @@
 
-import { async } from '@firebase/util';
-import { addDoc, collection, getDocs } from 'firebase/firestore';
+
+import { addDoc, collection } from 'firebase/firestore';
 import React from 'react';
 import { useState } from 'react';
-import { useEffect } from 'react';
+
 import { toast } from 'react-toastify';
 import { db } from '../../config/firebase';
 import Dashboardnavbar from '../Dashboardnavbar';

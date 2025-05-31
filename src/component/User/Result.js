@@ -1,10 +1,10 @@
 import React from 'react'
-import { FiPrinter } from "react-icons/fi";
+
 import { useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { collection, getDoc, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
 export default function Result() {

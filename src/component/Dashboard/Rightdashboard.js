@@ -1,13 +1,13 @@
 import React from 'react'
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { BiSolidCoupon } from "react-icons/bi";
-import { FaBuildingColumns, FaFile } from "react-icons/fa6";
+import { FaBuildingColumns } from "react-icons/fa6";
 import { FiFileText } from "react-icons/fi";
 import { useEffect } from 'react';
-import { collection, doc, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { useState } from 'react';
-import { async } from '@firebase/util';
+
 
 export default function () {
     const[totalstudent,setTotalstudent]=useState();

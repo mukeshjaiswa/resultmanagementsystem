@@ -1,5 +1,5 @@
 
-import { async } from '@firebase/util';
+
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 import React from 'react';
 import { useEffect } from 'react';

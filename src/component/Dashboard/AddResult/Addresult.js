@@ -1,4 +1,4 @@
-import { addDoc, collection, getDoc, getDocs, query, where } from 'firebase/firestore'
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -10,7 +10,7 @@ import { toast } from 'react-toastify'
 
 export default function Addresult() {
     const [selectsemester, setselectsemester] = useState('');
-    const [name, setName] = useState('');
+   
     const [symbol, setSymbols] = useState('');
     const [marksList, setMarksList] = useState([]);
    

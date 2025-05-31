@@ -9,7 +9,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { BiSolidEditAlt } from "react-icons/bi";
 import { RxCross1 } from "react-icons/rx";
 import { toast } from 'react-toastify'
-import { async } from '@firebase/util'
+
 
 export default function ManageStudents() {
     const [semester, setSemester] = useState('')
@@ -64,7 +64,7 @@ export default function ManageStudents() {
     }, [])
     const handlerdelete = async (id) => {
         await deleteDoc(doc(db, 'students', id));
-        setStudents(prev => prev.filter(sub => sub.id != id))
+        setStudents(prev => prev.filter(sub => sub.id !== id))
         toast.success("Sucessfully deleter")
     }
     const handleredit = (data) => {
@@ -84,7 +84,7 @@ export default function ManageStudents() {
             await updateDoc(studentref,{email,name})
             toast.success("Update students data is sucessfully")
             setEdit(!edit)
-            setStudents(prev=>prev.map((std)=>std.id==editid?{...std, name,email}:std))
+            setStudents(prev=>prev.map((std)=>std.id===editid?{...std, name,email}:std))
         } catch (error) {
             toast.error("Error")
             

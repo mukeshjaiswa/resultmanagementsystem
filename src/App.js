@@ -13,12 +13,12 @@ import ManageStudents from './component/Dashboard/addStudents/ManageStudents';
 import Addsubject from './component/Dashboard/Addsubject/Addsubject';
 import Managesubject from './component/Dashboard/Addsubject/Managesubject';
 import Dashboard from './component/Dashboard/Dashboard';
-import Rightdashboard from './component/Dashboard/Rightdashboard';
+
 
 import Home from './component/Pages/Home';
 import CheckResult from './component/User/CheckResult';
 import Result from './component/User/Result'; 
- import { ToastContainer, toast } from 'react-toastify';
+ import { ToastContainer } from 'react-toastify';
 
 
 function App() {

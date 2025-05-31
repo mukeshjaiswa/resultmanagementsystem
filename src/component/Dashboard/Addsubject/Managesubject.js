@@ -8,7 +8,7 @@ import { collection, deleteDoc, doc, getDocs, query, updateDoc, where } from 'fi
 import { db } from '../../config/firebase'
 import { toast } from 'react-toastify'
 import { RxCross1 } from 'react-icons/rx'
-import { async } from '@firebase/util'
+
 
 export default function Managesubject() {
     const [semester, setSemester] = useState('')

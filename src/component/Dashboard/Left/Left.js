@@ -44,7 +44,7 @@ export default function Left() {
 
 
                     </div>
-                    {arrow == `${item.name}` ?
+                    {arrow === `${item.name}` ?
                     <>
                         <div className='flex  text-white items-center gap-3 px-10 mt-3' >
 

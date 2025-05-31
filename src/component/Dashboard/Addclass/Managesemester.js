@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore'
 import React from 'react'
 import { BiSolidEditAlt } from 'react-icons/bi'
 import { IoTrashOutline } from 'react-icons/io5'
@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { db } from '../../config/firebase'
 import Dashboardnavbar from '../Dashboardnavbar'
 import Left from '../Left/Left'
-import { async } from '@firebase/util'
+
 import { toast } from 'react-toastify'
 import { RxCross1 } from "react-icons/rx";
 
